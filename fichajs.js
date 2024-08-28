@@ -1,26 +1,115 @@
+function toggletrilhaDiv(nex, minValue, divId){
+    let div = document.getElementById(divId)
+    if(nex > minValue){
+        div.classList.remove('hidden')
+    } else {
+        div.classList.add('hidden')
+    }
+}
+
+
 function calcular() {
-    var classe = document.getElementById('clas').value
-    var origem = document.getElementById('orig').value
-    var nex = parseInt(document.getElementById('lvl').value)
+    let classe = document.getElementById('clas').value
+    let origem = document.getElementById('orig').value
+    let nex = parseInt(document.getElementById('lvl').value)
+    let trilhac = document.getElementById('tcomb').value
     
-    var força = parseInt(document.getElementById('for').value)
-    var agili = parseInt(document.getElementById('agi').value)
-    var vigor = parseInt(document.getElementById('vig').value)
-    var intel = parseInt(document.getElementById('int').value)
-    var prese = parseInt(document.getElementById('pre').value)
-
-    var pv = 8+vigor
-    var pe = 1+prese
-    var san = 8
-    var pet = 1+intel
-
-    var def = 10+agili
+    let força = parseInt(document.getElementById('for').value)
+    let agili = parseInt(document.getElementById('agi').value)
+    let vigor = parseInt(document.getElementById('vig').value)
+    let intel = parseInt(document.getElementById('int').value)
+    let prese = parseInt(document.getElementById('pre').value)
     
-    document.getElementById("divnex10comb").style.display = "none"
-    document.getElementById("divnex10spec").style.display = "none"
-    document.getElementById("divnex10ocul").style.display = "none"
+    document.addEventListener('DOMContentLoaded', () => {
+        let classe
+    })
+    
+    let pv = 8+vigor
+    let pe = 1+prese
+    let san = 8
+    let pet = 1+intel    
+    let defesa = 10+agili
+    
 
-    if (nex >= 1 && classe === "Combatente" && classe !== "Especialista" && classe !== "Ocultista") {
+    document.getElementById("divnex10comb").classList.add('hidden')
+    document.getElementById("divnex10spec").classList.add('hidden')
+    document.getElementById("divnex10ocul").classList.add('hidden')
+
+    switch(classe){
+        case "Combatente":
+            pv = (20+vigor)+((4+vigor)*nex)
+            pe = (2+prese)*(nex)
+            san = 12+(3*nex)
+            pet = 1+int
+            toggletrilhaDiv(nex, 1, 'divnex10comb')
+
+            let periciaLuta = document.getElementById("luta").value
+            let periciaPontaria = document.getElementById("pontaria").value
+            let periciaFortitude = document.getElementById("fortitude").value
+            let periciaReflexos = document.getElementById("reflexos").value
+
+            if(periciaLuta.checked){
+                periciaPontaria.disabled = true
+            }
+            if(periciaFortitude.checked){
+                periciaFortitude.disabled = true
+            }
+            
+
+            
+        break;
+
+        case "Especialista":
+            pv = (16+vigor)+((3+vigor)*nex)
+            pe = (3+prese)*(nex)
+            san = 16+(4*nex)
+            pet = 7+intel
+            toggletrilhaDiv(nex, 1, 'divnex10spec')
+            break;
+
+        case "Ocultista":
+            pv = (20+vigor)+((4+vigor)*nex)
+            pe = (2+pre)*(nex)
+            san = 12+(3*nex)
+            pet = 3+intel
+            toggletrilhaDiv(nex, 1, 'divnex10ocul')
+
+            break;
+
+            default:
+
+            break;
+    }
+
+    document.getElementById("PontoVida").textContent = ("Pontos de vida: " + pv)
+    document.getElementById("Sanidade").textContent = ("Sanidade: " + san)
+    document.getElementById("PontoEsfor").textContent = ("Pontos de Esforço: " + pe)
+    document.getElementById("Defesadiv").textContent = ("Defesa: " + defesa)
+
+    function limitarPericias() {
+        let checkboxes = document.querySelectorAll('input[name="pericia"]:checked');
+        let uncheckedBoxes = document.querySelectorAll('input[name="pericia"]:not(:checked)');
+        if (checkboxes.length >= pet) {
+            uncheckedBoxes.forEach(function (box) {
+                box.disabled = true;
+            });
+        } else {
+            uncheckedBoxes.forEach(function (box) {
+                box.disabled = false;
+            });
+        }
+    }
+
+    document.querySelectorAll('input[name="pericia"]').forEach(function (checkbox) {
+        checkbox.addEventListener('change', limitarPericias);
+    });
+
+    limitarPericias();
+}
+
+//Abaixo é o código desatualizado
+
+    /*if (nex >= 1 && classe === "Combatente" && classe !== "Especialista" && classe !== "Ocultista") {
         document.getElementById('divnex10comb').style.display = "block"
 
         pv = (20+vigor)+((4+vigor)*nex)
@@ -46,6 +135,5 @@ function calcular() {
 
     } else {
         document.getElementById('divnex10comb').style.display = "none"
-    } 
+    } */
 
-}
