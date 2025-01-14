@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Ordo Realitas</title>
+
+    <style>
+        body{
+            font: normal 20px Arial;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>Le fishe</header>
+
+    <div name="divgeral"> <form action="#">
+        <label for="clas">Selecione sua classe</label>
+        <select name="ClasseRPG" id="clas">
+            <option value="" disabled selected hidden> Selecione</option>
+            <option value="Combatente">Combatente</option>
+            <option value="Especialista">Especialista</option>
+            <option value="Ocultista">Ocultista</option>
+            <option value="Mundano">Mundano</option>
+        </select>
+         <br>
+         <select title="selectOrig" name="Origem" id="orig">
+            <option value="Academico">Acadêmico</option>
+            <option value="Agent">Agente de saúde</option>
+            <option value="Amnesico">Amnésico</option>
+            <option value="Artista">Artista</option>
+            <option value="Atleta">Atleta</option>
+            <option value="Chef">Chef</option>
+            <option value="Criminoso">Criminoso</option>
+            <option value="Cultist">Cultista Arrependido</option>
+            <option value="Desgarrado">Desgarrado</option>
+            <option value="Engenheiro">Engenheiro</option>
+            <option value="Executivo">Executivo</option>
+            <option value="Investigador">Investigador</option>
+            <option value="Lutador">Lutador</option>
+            <option value="Magnata">Magnata</option>
+            <option value="Operario">Operário</option>
+            <option value="Policial">Policial</option>
+            <option value="Religioso">Religioso</option>
+            <option value="ServidorP">Servidor Público</option>
+            <option value="TeoricoC">Teórico da conspiração</option>
+            <option value="ti">T.I.</option>
+            <option value="TrabalhadorR">Trabalhador rural</option>
+            <option value="Trambiqueiro">Trambiqueiro</option>
+            <option value="Universitario">Universitário</option>
+            <option value="Vitima">Vítima</option>
+            <option value="Jornalista">Jornalista</option>
+            <option value="Professor">Professor</option>
+            <option value="CienFore">Cientista forense</option>
+            <option value="Escritor">Escritor</option>
+         </select>
+         <br>
+        <label for="lvl">Digite seu nex com base no seu limite de PE base</label>
+        <input name="nex" id="lvl" type="number">
+         <br>
+
+         
+         
+        </form> </div>
+        
+        <div id="atribut">Digite seus atributos <br>
+        <input type="number" name="Força" id="for" placeholder="Força" max="5" min="-1">
+        <input type="number" name="Agilidade" id="agi" placeholder="Agilidade" max="5" min="-1">
+        <input type="number" name="Vigor" id="vig" placeholder="Vigor" max="5" min="-1">
+        <input type="number" name="Intelecto" id="int" placeholder="Intelecto" max="5" min="-1">
+        <input type="number" name="Presença" id="pre" placeholder="Presença" max="5" min="-1">
+    </div>
+
+    <div id="divnex10comb" class="hidden"><form action="#">
+        <label for="tcomb">Selecione a trilha </label>
+        <select name="TrilhaComb" id="tcomb">
+            <option value="Aniquilador">Aniquilador</option>
+            <option value="Comando">Comandante de campo</option>
+            <option value="Guerreiro">Guerreiro</option>
+            <option value="SpecOps">Operações Especiais</option>
+            <option value="Choq">Tropa de choque</option>
+        </select>
+    </form></div>
+
+    <div id="divnex10spec" class="hidden"><form action="#">
+        <label for="tespec">Selecione a trilha </label>
+        <select name="TrilhaEspec" id="tespec">Selecione a trilha
+            <option value="Sniper">Atirador de Elite</option>
+            <option value="Infiltrador">Infiltrador</option>
+            <option value="Medico">Médico de campo</option>
+            <option value="Negociador">Negociador</option>
+            <option value="Tecninco">Técnico</option>
+        </select>
+    </form></div>
+    
+    <div id="divnex10ocul" class="hidden"><form action="#">
+        <label for="tocul">Selecione a trilha</label>
+        <select name="TrilhaOcul" id="tocul">
+            <option value="Conduite">Conduíte</option>
+            <option value="Flagelador">Flagelador</option>
+            <option value="Graduado">Graduado</option>
+            <option value="Intuitivo">Intuitivo</option>
+            <option value="LamParanormal">Lâmina paranormal</option>
+        </select>
+    </form></div>
+    
+    <div>Status
+        <p id="PontoVida">Pontos de vida: </p>
+        <p id="Sanidade">Pontos de sanidade: </p>   
+        <p id="PontoEsfor">Pontos de esforço: </p>   
+        <p id="Defesadiv">Defesa: </p>    
+    </div>
+    
+    <form id="main-form">
+
+            <div id="combatente-choices" style="display:none;">
+        <label for="luta-pontaria">Escolha entre Luta ou Pontaria:</label>
+        <select id="luta-pontaria">
+            <option value="">Selecione</option>
+            <option value="luta">Luta</option>
+            <option value="pontaria">Pontaria</option>
+        </select>
+
+        <label for="reflexos-fortitude">Escolha entre Reflexos ou Fortitude:</label>
+        <select id="reflexos-fortitude">
+            <option value="">Selecione</option>
+            <option value="reflexos">Reflexos</option>
+            <option value="fortitude">Fortitude</option>
+        </select>
+    </div>
+
+        <input type="submit" value="calcfish">
+    </form>
+
+    <div>Perícias</div>
+    <form>
+        <label for="acrobacia">
+            <input type="checkbox" name="pericia" id="acrobacia"> Acrobacia
+        </label>
+        <br>
+        
+        <label for="adestramento">
+            <input type="checkbox" name="pericia" id="adestramento"> Adestramento
+        </label>
+        <br>
+        
+        <label for="artes">
+            <input type="checkbox" name="pericia" id="artes"> Artes
+        </label>
+        <br>
+        
+        <label for="atletismo">
+            <input type="checkbox" name="pericia" id="atletismo"> Atletismo
+        </label>
+        <br>
+        
+        <label for="atualidades">
+           <input type="checkbox" name="pericia" id="atualidades"> Atualidades
+        </label>
+        <br>
+        
+        <label for="ciências">
+            <input type="checkbox" name="pericia" id="ciências"> Ciências
+        </label>
+        <br>
+    
+        <label for="crime">
+            <input type="checkbox" name="pericia" id="crime"> Crime
+        </label>
+        <br>
+        
+        <label for="diplomacia">
+            <input type="checkbox" name="pericia" id="diplomacia"> Diplomacia
+        </label>
+        <br>
+        
+        <label for="enganação">
+            <input type="checkbox" name="pericia" id="enganação"> Enganação
+        </label>
+        <br>
+        
+        <label for="fortitude">
+           <input type="checkbox" name="pericia" id="fortitude"> Fortitude
+        </label>
+        <br>
+        
+        <label for="furtividade">
+            <input type="checkbox" name="pericia" id="furtividade"> Furtividade
+        </label>
+        <br>
+        
+        <label for="iniciativa">
+            <input type="checkbox" name="pericia" id="iniciativa"> Iniciativa
+        </label>
+        <br>
+    
+        <label for="intimidação">
+            <input type="checkbox" name="pericia" id="intimidação"> Intimidação
+        </label>
+        <br>
+        
+        <label for="intuição">
+           <input type="checkbox" name="pericia" id="intuição"> Intuição
+        </label>
+        <br>
+        
+        <label for="investigação">
+            <input type="checkbox" name="pericia" id="investigação"> Investigação
+        </label>
+        <br>
+        
+        <label for="luta">
+           <input type="checkbox" name="pericia" id="luta"> Luta
+        </label>
+        <br>
+        
+        <label for="medicina">
+           <input type="checkbox" name="pericia" id="medicina"> Medicina
+        </label>
+        <br>
+        
+        <label for="ocultismo">
+            <input type="checkbox" name="pericia" id="ocultismo"> Ocultismo
+        </label>
+        <br>
+        
+        <label for="percepção">
+            <input type="checkbox" name="pericia" id="percepção"> Percepção
+        </label>
+        <br>
+        
+        <label for="pilotagem">
+           <input type="checkbox" name="pericia" id="pilotagem"> Pilotagem
+       </label>
+       <br>
+       
+       <label for="pontaria">
+           <input type="checkbox" name="pericia" id="pontaria"> Pontaria
+       </label>
+       <br>
+       
+       <label for="profissão">
+           <input type="checkbox" name="pericia" id="profissão"> Profissão
+        </label>
+        <br>
+        
+        <label for="reflexos">
+            <input type="checkbox" name="pericia" id="reflexos"> Reflexos
+        </label>
+        <br>
+        
+        <label for="religião">
+            <input type="checkbox" name="pericia" id="religião"> Religião
+        </label>
+        <br>
+        
+        <label for="sobrevivência">
+            <input type="checkbox" name="pericia" id="sobrevivência"> Sobrevivência
+        </label>
+        <br>
+        
+        <label for="tática">
+            <input type="checkbox" name="pericia" id="tática"> Tática
+        </label>
+        <br>
+        
+        <label for="tecnologia">
+            <input type="checkbox" name="pericia" id="tecnologia"> Tecnologia
+        </label>
+        <br>
+        
+        <label for="vontade">
+            <input type="checkbox" name="pericia" id="vontade"> Vontade
+        </label>
+        <br>
+    </form>
+    
+        
+        
+        
+        <script type="module" src="main.js" defer></script>
+    </body>
+    </html>
+    
